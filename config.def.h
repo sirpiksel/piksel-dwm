@@ -94,7 +94,7 @@ static const char *nvimcmd[]     = { "st", "-e", "nvim", NULL };
 static const char *m3morycmd[]   = { "/home/philip/Documents/dev/scripts/m3mory.sh", NULL };
 static const char *spotifycmd[]  = { "spotify", NULL };
 static const char *charcmd[]     = { "/home/philip/Documents/dev/scripts/germanchar.sh", NULL };
-static const char *lockcmd[]     = { "xsecurelock & sleep 5 && sudo zzz", NULL };
+static const char *lockcmd[]     = { "/home/philip/Documents/dev/scripts/leep.sh", NULL };
 static const char *passcmd[]     = { "passmenu", "-c", "-l", "5", NULL };
 
 static Key keys[] = {
