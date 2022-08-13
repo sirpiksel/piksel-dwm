@@ -101,7 +101,7 @@ static Key keys[] = {
     /* modifier                     key            function        argument */
     { MODKEY,                       XK_space,      spawn,          {.v = dmenucmd } },
     { MODKEY,                       XK_Return,     zoom,           {0} },
-	{ MODKEY,                       XK_semicolon,  spawn,          {.v = termcmd } },
+    { MODKEY,                       XK_semicolon,  spawn,          {.v = termcmd } },
     { MODKEY,                       XK_d,          spawn,          {.v = browsercmd } },
     { MODKEY|ShiftMask,             XK_d,          spawn,          {.v = toriumcmd } },
     { MODKEY,                       XK_f,          spawn,          {.v = lfcmd } },
