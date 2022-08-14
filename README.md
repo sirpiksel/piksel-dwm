@@ -11,7 +11,7 @@ alwayscenter
 barpadding
 fullgaps
 monoclesymbol
-underlinetags
+activetagindicatorbar
 warp
 integrated status text
 ```
