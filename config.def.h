@@ -53,7 +53,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.65; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
@@ -86,7 +86,6 @@ static const char *lfcmd[]       = { "st", "-e", "lf", NULL };
 static const char *voldowncmd[]  = { "/home/philip/Documents/dev/scripts/volumecontrol.sh", "-r", NULL };
 static const char *volupcmd[]    = { "/home/philip/Documents/dev/scripts/volumecontrol.sh", "-i", NULL };
 static const char *nvimcmd[]     = { "st", "-e", "nvim", NULL };
-static const char *m3morycmd[]   = { "/home/philip/Documents/dev/scripts/m3mory.sh", NULL };
 static const char *spotifycmd[]  = { "spotify", NULL };
 static const char *charcmd[]     = { "/home/philip/Documents/dev/scripts/germanchar.sh", NULL };
 static const char *lockcmd[]     = { "/home/philip/Documents/dev/scripts/leep.sh", NULL };
@@ -103,7 +102,6 @@ static Key keys[] = {
     { MODKEY,                       XK_c,          spawn,          {.v = voldowncmd } },
     { MODKEY,                       XK_v,          spawn,          {.v = volupcmd } },
     { MODKEY,                       XK_g,          spawn,          {.v = nvimcmd } },
-    { MODKEY|ShiftMask,             XK_g,          spawn,          {.v = m3morycmd } },
     { MODKEY,                       XK_s,          spawn,          {.v = spotifycmd } },
     { MODKEY,                       XK_o,          spawn,          {.v = lockcmd } },
     { MODKEY,                       XK_apostrophe, spawn,          {.v = charcmd } },
