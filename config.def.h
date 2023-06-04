@@ -26,7 +26,7 @@ static const Block blocks[] = {
   /* fg      command                                                                 interval signal */
   { col_sel, "date +%R:%S",                                                          1,       1},
   { col_sel, "date +%d.%m.%y",                                                       60,      2},
-  { col_sel, "pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5 }' | sed -n 1p", 1,       4},
+  { col_sel, "pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed -n 1p", 1,       4},
   { col_sel, "cat /sys/class/net/eth0/operstate",                                    10,      5},
 };
 
@@ -77,8 +77,8 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]     = { "dmenu_run", "-c", "-l", "5", NULL };
-static const char *applaunch[]    = { "/home/philip/.cargo/bin/yah", "a", NULL };
-static const char *scrlaunch[]    = { "/home/philip/.cargo/bin/yah", "s", NULL };
+static const char *applaunch[]    = { "/home/philip/.local/share/cargo/bin/yah", "a", NULL };
+static const char *scrlaunch[]    = { "/home/philip/.local/share/cargo/bin/yah", "s", NULL };
 static const char *termcmd[]      = { "st", NULL };
 static const char *browser[]      = { "chromium", NULL };
 static const char *incognitocmd[] = { "chromium", "-incognito", NULL };
@@ -88,7 +88,7 @@ static const char *volup[]        = { "pactl", "set-sink-volume", "@DEFAULT_SINK
 static const char *editor[]       = { "st", "-e", "nvim", NULL };
 static const char *spotify[]      = { "spotify", NULL };
 static const char *passcmd[]      = { "passmenu", "-c", "-l", "5", NULL };
-static const char *charpick[]     = { "/home/philip/.cargo/bin/yah", "c", NULL };
+static const char *charpick[]     = { "/home/philip/.local/share/cargo/bin/yah", "c", NULL };
 
 static Key keys[] = {
   /* modifier                     key            function        argument */
