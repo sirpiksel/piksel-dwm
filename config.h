@@ -26,7 +26,8 @@ static const Block blocks[] = {
   /* fg      command                                                                 interval signal */
   { col_sel, "date +%R:%S",                                                          1,       1},
   { col_sel, "date +%d.%m.%y",                                                       60,      2},
-  { col_sel, "pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed -n 1p", 1,       4},
+  { col_sel, "pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed -n 1p",  1,       3},
+  { col_sel, "yah x",                                                                60,      4},
   { col_sel, "cat /sys/class/net/eth0/operstate",                                    10,      5},
 };
 
