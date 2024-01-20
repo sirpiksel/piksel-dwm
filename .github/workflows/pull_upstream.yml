@@ -1,0 +1,29 @@
+name: Pull Upstream
+
+on:
+  schedule:
+    - cron: '0 6 1 * *'
+
+jobs:
+  pull-upstream:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Git
+      run: |
+        git config user.email "<>"
+        git config user.name "Github Actions Bot"
+
+    - name: Add remote branch
+      run: |
+        git remote add upstreamOrigin https://git.suckless.org/dwm
+        git fetch upstreamOrigin
+
+    - name: Rebase changes
+      run: |
+        git checkout upstream
+        git pull --rebase upstreamOrigin master
+        git push origin upstream
