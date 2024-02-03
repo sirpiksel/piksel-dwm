@@ -26,4 +26,4 @@ jobs:
       run: |
         git checkout upstream
         git pull --rebase upstreamOrigin master
-        git push origin upstream
+        git push origin
