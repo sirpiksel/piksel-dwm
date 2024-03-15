@@ -11,7 +11,9 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    
+      with:
+        ref: upstream
+
     - name: Set up Git
       run: |
         git config user.email "<>"
@@ -24,6 +26,5 @@ jobs:
 
     - name: Rebase changes
       run: |
-        git checkout upstream
         git pull --rebase upstreamOrigin master
         git push origin
