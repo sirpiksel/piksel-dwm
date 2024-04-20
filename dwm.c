@@ -23,13 +23,11 @@
 #include <errno.h>
 #include <locale.h>
 #include <signal.h>
-#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <poll.h>
-#include <sys/types.h>
 #include <sys/wait.h>
 #include <X11/cursorfont.h>
 #include <X11/keysym.h>
@@ -189,7 +187,6 @@ static int getstatus(int width);
 static int gettextprop(Window w, Atom atom, char *text, unsigned int size);
 static void grabbuttons(Client *c, int focused);
 static void grabkeys(void);
-static void incnmaster(const Arg *arg);
 static void keypress(XEvent *e);
 static void killclient(const Arg *arg);
 static void manage(Window w, XWindowAttributes *wa);
@@ -215,7 +212,6 @@ static void sendstatusbar(const Arg *arg);
 static void setclientstate(Client *c, long state);
 static void setfocus(Client *c);
 static void setfullscreen(Client *c, int fullscreen);
-static void setgaps(const Arg *arg);
 static void setlayout(const Arg *arg);
 static void setmfact(const Arg *arg);
 static void setup(void);
@@ -1110,13 +1106,6 @@ grabkeys(void)
 	}
 }
 
-void
-incnmaster(const Arg *arg)
-{
-	selmon->nmaster = MAX(selmon->nmaster + arg->i, 0);
-	arrange(selmon);
-}
-
 #ifdef XINERAMA
 static int
 isuniquegeom(XineramaScreenInfo *unique, size_t n, XineramaScreenInfo *info)
@@ -1654,7 +1643,7 @@ sendmon(Client *c, Monitor *m)
 void
 sendstatusbar(const Arg *arg)
 {
-	char button[2] = { '0' + arg->i & 0xff, '\0' };
+	char button[2] = { '0' + (arg->i & 0xff), '\0' };
 	getcmd(blocknum, button);
 }
 
@@ -1730,16 +1719,6 @@ setfullscreen(Client *c, int fullscreen)
 		resizeclient(c, c->x, c->y, c->w, c->h);
 		arrange(c->mon);
 	}
-}
-
-void
-setgaps(const Arg *arg)
-{
-	if ((arg->i == 0) || (selmon->gappx + arg->i < 0))
-		selmon->gappx = 0;
-	else
-		selmon->gappx += arg->i;
-	arrange(selmon);
 }
 
 void
