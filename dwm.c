@@ -1765,7 +1765,6 @@ setup(void)
 	int i;
 	XSetWindowAttributes wa;
 	Atom utf8string;
-	struct sigaction sa;
 
 	setsignal(SIGCHLD, sigchld); /* zombies */
 	setsignal(SIGALRM, sigalrm); /* timer */
