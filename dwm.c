@@ -773,8 +773,10 @@ drawbar(Monitor *m)
 
 	if ((w = m->ww - tw - x) > bh) {
 		if (m->sel) {
+			int mid = (m->ww - (int)TEXTW(m->sel->name)) / 2 - x;
+			mid = mid >= lrpad / 2 ? mid : lrpad / 2;
 			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
-			drw_text(drw, x, 0, w - 2 * sp, bh, lrpad / 2, m->sel->name, 0);
+			drw_text(drw, x, 0, w - 2 * sp, bh, mid, m->sel->name, 0);
 			if (m->sel->isfloating)
 				drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);
 		} else {
@@ -999,8 +1001,6 @@ getstatus(int width)
 	char fgcol[8];
 				/* fg		bg */
 	const char *cols[8] = 	{ fgcol, colors[SchemeStatus][ColBg] };
-	//uncomment to inverse the colors
-	//const char *cols[8] = 	{ colors[SchemeStatus][ColBg], fgcol };
 
 	#if INVERSED
 	for (i = 0; i < LENGTH(blocks); i++)
@@ -1017,8 +1017,12 @@ getstatus(int width)
 		len = TEXTW(blockoutput[i]) - lrpad;
 		all -= len;
 		drw_text(drw, all, 0, len, bh, 0, blockoutput[i], 0);
-		/* draw delimiter */
-		if (*delimiter == '\0') /* ignore no delimiter */
+		/* draw delimiter as needed */
+		#if INVERSED
+		if (*delimiter == '\0' || i == LENGTH(blocks) - 1)
+		#else
+		if (*delimiter == '\0' || i == 0)
+		#endif /* INVERSED */
 			continue;
 		drw_setscheme(drw, scheme[SchemeNorm]);
 		all -= delimlen;
@@ -1041,7 +1045,6 @@ gcd(int a, int b)
 
 	return a;
 }
-
 
 int
 gettextprop(Window w, Atom atom, char *text, unsigned int size)
@@ -1590,7 +1593,7 @@ run(void)
 				else /* NULL terminate the string */
 					blockoutput[i][bt++] = '\0';
 
-				drawbar(selmon);
+				drawbars();
 			} else if (fds[i + 1].revents & POLLHUP) {
 				fprintf(stderr, "dwm: block %d hangup", i);
 				perror(" failed");
@@ -1741,7 +1744,7 @@ setlayout(const Arg *arg)
 	if (selmon->sel)
 		arrange(selmon);
 	else
-		drawbar(selmon);
+		drawbars();
 }
 
 /* arg > 1.0 will set mfact absolutely */
@@ -2267,7 +2270,7 @@ updatesizehints(Client *c)
 void
 updatestatus(void)
 {
-	drawbar(selmon);
+	drawbars();
 }
 
 void
