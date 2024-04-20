@@ -750,8 +750,7 @@ drawbar(Monitor *m)
 		return;
 
 	/* draw status first so it can be overdrawn by tags later */
-	if (m == selmon) /* status is only drawn on selected monitor */
-		tw = getstatus(m->ww - 2 * sp);
+	tw = getstatus(m->ww - 2 * sp);
 
 	for (c = m->clients; c; c = c->next) {
 		occ |= c->tags;
