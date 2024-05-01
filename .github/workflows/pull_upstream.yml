@@ -26,5 +26,5 @@ jobs:
 
     - name: Rebase changes
       run: |
-        git pull --rebase upstreamOrigin main
+        git pull --rebase upstreamOrigin master
         git push origin
