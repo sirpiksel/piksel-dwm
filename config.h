@@ -23,11 +23,11 @@ static const char *colors[][3]      = {
 
 /* status bar */
 static const Block blocks[] = {
-  /* fg      command                                                                 interval signal */
-  { col_sel, "date +%R:%S",                                                          1,       1},
-  { col_sel, "date +%d.%m.%y",                                                       60,      2},
-  { col_sel, "pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed -n 1p",  1,       3},
-  { col_sel, "cat /sys/class/net/eth1/operstate",                                    10,      5},
+  /* fg      command                                                                      interval signal */
+  { col_sel, "date +%R:%S",                                                                1,       1},
+  { col_sel, "date +%d.%m.%y",                                                            60,       2},
+  { col_sel, "pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed -n 1p",        1,       3},
+  { col_sel, "awk '{ printf \"%s \", $0 }' /sys/class/net/eth*/operstate | sed 's/ $//'", 10,       5},
 };
 
 /* inverse the order of the blocks, comment to disable */
