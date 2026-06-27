@@ -88,6 +88,7 @@ static const char *volup[]        = { "pactl", "set-sink-volume", "@DEFAULT_SINK
 static const char *editor[]       = { "st", "-e", "nvim", NULL };
 static const char *spotify[]      = { "spotify", NULL };
 static const char *passcmd[]      = { "passmenu", "-c", "-l", "5", NULL };
+static const char *otpcmd[]       = { "/home/philip/.config/pass-otp-helper/otpmenu.sh", "-c", "-l", "5", NULL };
 static const char *charpick[]     = { "yah", "c", NULL };
 
 static const Key keys[] = {
@@ -105,6 +106,7 @@ static const Key keys[] = {
   { MODKEY,                       XK_s,          spawn,          {.v = spotify } },
   { MODKEY,                       XK_apostrophe, spawn,          {.v = charpick } },
   { MODKEY,                       XK_a,          spawn,          {.v = passcmd } },
+  { MODKEY|ShiftMask,             XK_a,          spawn,          {.v = otpcmd } },
   { MODKEY,                       XK_r,          togglebar,      {0} },
   { MODKEY,                       XK_j,          focusstack,     {.i = +1 } },
   { MODKEY,                       XK_k,          focusstack,     {.i = -1 } },

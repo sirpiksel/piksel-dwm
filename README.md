@@ -1,9 +1,13 @@
-# dwm - dynamic window manager
+<div align="center">
+
+# dwm — dynamic window manager
 a pretty ok dynamic window manager for X
+
+</div>
 
 > [!NOTE]
 > This is the repository for my personal config.
-> For the official dwm repo, visit [suckless.org](https://dwm.suckless.org/)
+> For the official dwm repo, visit [suckless.org](https://git.suckless.org/dwm)
 
 ## Install
 ```sh
